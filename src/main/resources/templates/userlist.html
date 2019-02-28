@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Utilisateurs</title>
+</head>
+<body>
+    <h1>Liste des utilisateurs + mot de passe</h1>
+    <p>liste 1</p>
+    <p th:text="${userList}"></p>
+    <p th:each="user : ${userList}">
+        <!--<span th:text="${user.getName()}"></span>&lt;!&ndash;<span th:text="${user.getPassword()}"></span>&ndash;&gt;-->
+        <span th:text="${user.getName()}+' '+${user.getPassword()}"></span>
+    </p>
+</body>
+</html>

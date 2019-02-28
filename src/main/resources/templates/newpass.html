@@ -1,18 +1,27 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8">
     <title>New Password</title>
+    <style type="text/css">
+        legend {text-align: center}
+    </style>
 </head>
 <body>
-    <h1>Liste des utilisateurs + mot de passe</h1>
-    <p>liste 1</p>
-    <p th:each="user : ${listeUsers}">
-        <span th:text="${user.getName()}"></span><!--<span th:text="${user.getPassword()}"></span>-->
-    </p>
-<!--    <p>liste 2</p>
-    <p th:each="user2 : ${listeUsers2}">
-        <span th:text="${user2.getName()}+' '+${user2.getPassword()}"></span>
-    </p>-->
+<!--TODO: titre = Utilisateur N° 'numéro utilisateur'-->
+
+    <!--<h1 th:text="Utilisateur N ${}">Utilisateur N° XXXX</h1>-->
+
+    <h1></h1>
+    <fieldset><legend><b><em>Formulaire Nouveau Mot de Passe</em></b></legend>
+        <form action="/admin/newpass" class="formulaire" method="post">
+            <!--<input type="hidden" th:text="${userList}">-->
+            <label for="champ1"/><input sec:authorize="hasAnyAuthority('ROLE_USER')" id="champ1" type="text" placeholder="Votre ancien mot de passe"><br/>
+            <label for="champ2"/><input size="50" id="champ2" type="text" placeholder="Entrez votre mot de passe"><br/>
+            <label for="champ3"/><input size="50" id="champ3" type="text" placeholder="Confirmez votre mot de passe"><br/>
+            <input type="submit" value="Valider">
+            <!--<p th:text="${}"></p>-->
+        </form>
+    </fieldset>
 </body>
 </html>

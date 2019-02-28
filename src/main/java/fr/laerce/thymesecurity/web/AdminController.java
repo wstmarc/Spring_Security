@@ -11,23 +11,33 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 
-//@RequestMapping("/admin")
+
+@RequestMapping("/admin")
 @Controller
 public class AdminController {
 
     @Autowired
     private UserDao userDao;
 
-        @GetMapping("/newpass")
 //    @GetMapping("admin/newpass")
-    public String newpass(Model model) {
-
-        List<User> users = userDao.findAll();
-        Iterable<User> users2 = userDao.findAll();
-        model.addAttribute("listeUsers", users);
-//        model.addAttribute("listeUsers2", users2);
+    @GetMapping("/userlist")
+    public String userlist(Model model) {
+        Iterable<User> users = userDao.findAll();
+        model.addAttribute("userList", users);
         System.out.println("liste des utilisateurs: " + users);//
-        return "newpass";
+//        return "redirect:/admin/userlist";
+//        return "admin/userlist";
+        return "/userlist";
+    }
+
+//    @GetMapping("/newpass/{id}")
+    @GetMapping("/newpass")
+    public String newpass(Model model){
+        Iterable<User> users = userDao.findAll();
+        model.addAttribute("userList", users);
+//        return "redirect:/admin/newpass";
+//        return "admin/newpass";
+        return "/newpass";
     }
 }
 
