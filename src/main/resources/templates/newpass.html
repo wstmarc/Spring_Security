@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New Password</title>
+</head>
+<body>
+    <h1>Liste des utilisateurs + mot de passe</h1>
+    <p>liste 1</p>
+    <p th:each="user : ${listeUsers}">
+        <span th:text="${user.getName()}"></span><!--<span th:text="${user.getPassword()}"></span>-->
+    </p>
+<!--    <p>liste 2</p>
+    <p th:each="user2 : ${listeUsers2}">
+        <span th:text="${user2.getName()}+' '+${user2.getPassword()}"></span>
+    </p>-->
+</body>
+</html>
