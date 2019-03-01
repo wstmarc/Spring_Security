@@ -8,6 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.List;
 
 /**
  * Projet thyme-security
@@ -48,4 +49,7 @@ public class JpaUserService {
         return userDao.findByName(userName);
     }
 
+    public User findById(Long id){return userDao.findOne(id);}
+
+    public List<User> list(){return userDao.findAll();}
 }
